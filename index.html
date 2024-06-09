@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      input,
+      select,
+      button {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .result {
+        font-size: 18px;
+        font-weight: bold;
+        color: #28a745;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Xét tuyển sinh viên</h1>
+      <div>
+        <label for="diemChuan">Nhập điểm chuẩn:</label>
+        <input type="number" id="diemChuan" step="any" />
+      </div>
+      <div>
+        <label for="diemMon1">Nhập điểm môn 1:</label>
+        <input type="number" id="diemMon1" step="any" />
+      </div>
+      <div>
+        <label for="diemMon2">Nhập điểm môn 2:</label>
+        <input type="number" id="diemMon2" step="any" />
+      </div>
+      <div>
+        <label for="diemMon3">Nhập điểm môn 3:</label>
+        <input type="number" id="diemMon3" step="any" />
+      </div>
+      <div>
+        <label for="khuVuc">Chọn khu vực:</label>
+        <select id="khuVuc">
+          <option value="X">Không thuộc khu vực ưu tiên</option>
+          <option value="A">Khu vực A</option>
+          <option value="B">Khu vực B</option>
+          <option value="C">Khu vực C</option>
+        </select>
+      </div>
+      <div>
+        <label for="doiTuong">Chọn đối tượng:</label>
+        <select id="doiTuong">
+          <option value="0">Không thuộc đối tượng ưu tiên</option>
+          <option value="1">Đối tượng 1</option>
+          <option value="2">Đối tượng 2</option>
+          <option value="3">Đối tượng 3</option>
+        </select>
+      </div>
+      <button onclick="xetTuyen()">Xét tuyển</button>
+      <p class="result" id="ketQua"></p>
+    </div>
+    <br />
+    <h2>Nhập thông tin tiêu thụ điện</h2>
+    <label for="name">Tên:</label>
+    <input type="text" id="name" /><br /><br />
+    <label for="kw">Số Kw:</label>
+    <input type="number" id="kw" /><br /><br />
+    <button onclick="calculateBill()">Tính tiền điện</button><br /><br />
+
+    <p id="result"></p>
+    <br />
+    <h2>Nhập thông tin cá nhân</h2>
+    <label for="fullname">Họ và tên:</label>
+    <input type="text" id="fullname" /><br /><br />
+    <label for="income">Tổng thu nhập năm (VNĐ):</label>
+    <input type="number" id="income" /><br /><br />
+    <label for="dependents">Số người phụ thuộc:</label>
+    <input type="number" id="dependents" /><br /><br />
+    <button onclick="calculateTax()">Tính thuế</button><br /><br />
+
+    <p id="resultt"></p>
+    <br />
+    <h2>Nhập thông tin khách hàng</h2>
+    <label for="customerType">Loại khách hàng:</label>
+    <select id="customerType" onchange="showHideInputs()">
+      <option value="home">Nhà dân</option>
+      <option value="business">Doanh nghiệp</option></select
+    ><br /><br />
+
+    <label for="customerID">Mã khách hàng:</label>
+    <input type="text" id="customerID" /><br /><br />
+
+    <label for="connections">Số kết nối:</label>
+    <input type="number" id="connections" disabled /><br /><br />
+
+    <label for="premiumChannels">Số kênh cao cấp:</label>
+    <input type="number" id="premiumChannels" /><br /><br />
+
+    <button onclick="calculateBill()">Tính hóa đơn</button><br /><br />
+
+    <p id="resulttt"></p>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
